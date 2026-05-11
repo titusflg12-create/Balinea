@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"SERVICES\\\\|CONTACT\\\\|FOOTER\\\\|sticky-cta\\\\|bk-submit\\\\|\\\\/script\" '/Users/titusflugel/Desktop/Titus Code/Balinea/Balinea.html' | tail -20)",
+      "Read(//Users/titusflugel/Desktop/Titus Code/Balinea/**)"
+    ]
+  }
+}
