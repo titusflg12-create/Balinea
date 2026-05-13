@@ -556,7 +556,7 @@
     </div>
 
     <!-- Extra room photos row -->
-    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+    <div id="rooms-extra" style="margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
       <div class="zw ws fu d1" style="border-radius:2px;aspect-ratio:1;"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/4%20Deluxe%20Room%20Workdesk.jpg" alt="Workdesk"></div>
       <div class="zw ws fu d2" style="border-radius:2px;aspect-ratio:1;"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/12%20Suite%20Outdoor%20Bathroom%20BHH.jpg" alt="Suite Bathroom"></div>
       <div class="zw ws fu d3" style="border-radius:2px;aspect-ratio:1;"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/13%20Suite%20Wastafel%20BHH.jpg" alt="Suite Wastafel"></div>
@@ -863,13 +863,37 @@
 
   // Lightbox
   let lbImages = [], lbIdx = 0;
+  const imgGroupMap = new WeakMap();
 
   function lbBuild() {
-    const seen = new Set();
-    lbImages = [];
-    document.querySelectorAll('.gal-item img, .zw img').forEach(img => {
-      if (!seen.has(img.src)) { seen.add(img.src); lbImages.push(img); }
+    // Each section gets its own navigation group
+    const groupDefs = [
+      { sel: '.g-about',     key: 'about'   },
+      { sel: '.g-room',      key: 'deluxe'  },
+      { sel: '.g-room-r',    key: 'suite'   },
+      { sel: '#villa',       key: 'villa'   },
+      { sel: '.g-gal',       key: 'gallery' },
+      { sel: '#dining .g-3', key: 'dining'  },
+    ];
+    const groups = {};
+    groupDefs.forEach(({ sel, key }) => {
+      const c = document.querySelector(sel);
+      if (!c) return;
+      groups[key] = Array.from(c.querySelectorAll('.zw img, .gal-item img'));
+      groups[key].forEach(img => imgGroupMap.set(img, groups[key]));
     });
+    // Extra row: workdesk → deluxe, suite images → suite, parking → standalone
+    const extra = document.getElementById('rooms-extra');
+    if (extra) {
+      extra.querySelectorAll('.zw img').forEach(img => {
+        const src = decodeURIComponent(img.src);
+        let g;
+        if (/Deluxe|Workdesk/i.test(src)) g = groups.deluxe;
+        else if (/Suite/i.test(src))       g = groups.suite;
+        if (g && !g.includes(img)) g.push(img);
+        imgGroupMap.set(img, g || [img]);
+      });
+    }
     document.querySelectorAll('.zw').forEach(el => {
       el.addEventListener('click', () => lbOpen(el));
     });
@@ -878,8 +902,9 @@
   function lbOpen(el) {
     const img = el.querySelector('img');
     if (!img) return;
-    const idx = lbImages.findIndex(i => i.src === img.src);
-    lbIdx = idx !== -1 ? idx : 0;
+    lbImages = imgGroupMap.get(img) || [img];
+    lbIdx = lbImages.indexOf(img);
+    if (lbIdx === -1) lbIdx = 0;
     lbShow();
     document.getElementById('lb').classList.add('open');
     document.body.style.overflow = 'hidden';
