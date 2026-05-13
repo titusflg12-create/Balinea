@@ -90,8 +90,14 @@
     }
     .nav-a {
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em;
-      text-transform: uppercase; text-decoration: none; transition: color .2s;
+      text-transform: uppercase; text-decoration: none;
+      transition: background .22s, color .22s, border-color .22s;
     }
+    #dlinks .nav-a { padding: 8px 15px; border: 1px solid; }
+    #nav:not(.solid) #dlinks .nav-a { color: #F7F5F2; border-color: rgba(247,245,242,.5); background: rgba(0,0,0,.32); }
+    #nav:not(.solid) #dlinks .nav-a:hover { background: rgba(0,0,0,.55); border-color: #F7F5F2; }
+    #nav.solid #dlinks .nav-a { color: var(--parch); background: var(--ink); border-color: var(--ink); }
+    #nav.solid #dlinks .nav-a:hover { background: var(--terra); border-color: var(--terra); }
     #nav:not(.solid) .nav-a { color: rgba(247,245,242,.85); }
     #nav:not(.solid) .nav-a:hover { color: #F7F5F2; }
     #nav.solid .nav-a { color: var(--ink); }
@@ -332,10 +338,10 @@
              alt="Balinea Holiday Home" style="width:46px;height:46px;object-fit:contain;border-radius:50%;">
       </a>
       <!-- Desktop links -->
-      <div id="dlinks" style="display:flex;align-items:center;gap:32px;">
+      <div id="dlinks" style="display:flex;align-items:center;gap:10px;">
         <a href="#rooms"    class="nav-a">Rooms</a>
         <a href="#villa"    class="nav-a">Villa</a>
-        <a href="#gallery"  class="nav-a">Gallery</a>
+        <a href="#reviews"  class="nav-a">Reviews</a>
         <a href="#dining"   class="nav-a">Dining & Spa</a>
         <a href="https://book-directonline.com/properties/BalineaHolidayHomeDirect?locale=en&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=IDR&trackPage=yes" target="_blank" rel="noopener" class="btn btn-dark" style="padding:9px 22px;font-size:.62rem;">Book Now</a>
       </div>
@@ -351,7 +357,7 @@
       <div style="display:flex;flex-direction:column;gap:18px;">
         <a href="#rooms"    class="nav-a" style="color:var(--ink);" onclick="closeMenu()">Rooms</a>
         <a href="#villa"    class="nav-a" style="color:var(--ink);" onclick="closeMenu()">Villa</a>
-        <a href="#gallery"  class="nav-a" style="color:var(--ink);" onclick="closeMenu()">Gallery</a>
+        <a href="#reviews"  class="nav-a" style="color:var(--ink);" onclick="closeMenu()">Reviews</a>
         <a href="#dining"   class="nav-a" style="color:var(--ink);" onclick="closeMenu()">Dining & Spa</a>
         <a href="https://book-directonline.com/properties/BalineaHolidayHomeDirect?locale=en&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=IDR&trackPage=yes" target="_blank" rel="noopener" class="btn btn-dark" style="margin-top:8px;" onclick="closeMenu()">Book Now</a>
       </div>
@@ -490,10 +496,10 @@
     <div class="g-room" style="margin-bottom:76px;">
       <div class="fl">
         <div class="serif" style="font-size:.88rem;font-style:italic;color:var(--terra);margin-bottom:8px;">01</div>
-        <h3 class="serif" style="font-size:2rem;font-weight:400;line-height:1.18;letter-spacing:-.01em;margin-bottom:14px;">Deluxe Room</h3>
+        <h3 class="serif" style="font-size:2.4rem;font-weight:400;line-height:1.18;letter-spacing:-.01em;margin-bottom:14px;">Deluxe Room</h3>
         <div style="width:28px;height:1.5px;background:var(--terra);margin-bottom:20px;"></div>
         <p style="font-size:.93rem;line-height:1.88;color:var(--muted);font-weight:300;margin-bottom:22px;">
-          Six generous rooms facing the garden and pool. Each has a private terrace with sunbeds, ensuite outdoor bathroom, air conditioning and free Wi-Fi throughout.
+          6 Deluxe Rooms facing Garden and Pool. Each Deluxe Room with:
         </p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:32px;">
           <div style="display:flex;gap:9px;align-items:flex-start;"><span style="color:var(--terra);font-size:.6rem;margin-top:4px;flex-shrink:0;">▸</span><span style="font-size:.84rem;color:#1a1a1a;">Ensuite outdoor bathroom</span></div>
@@ -502,13 +508,15 @@
           <div style="display:flex;gap:9px;align-items:flex-start;"><span style="color:var(--terra);font-size:.6rem;margin-top:4px;flex-shrink:0;">▸</span><span style="font-size:.84rem;color:#1a1a1a;">Free Wi-Fi</span></div>
           <div style="display:flex;gap:9px;align-items:flex-start;"><span style="color:var(--terra);font-size:.6rem;margin-top:4px;flex-shrink:0;">▸</span><span style="font-size:.84rem;color:#1a1a1a;">16m pool access</span></div>
           <div style="display:flex;gap:9px;align-items:flex-start;"><span style="color:var(--terra);font-size:.6rem;margin-top:4px;flex-shrink:0;">▸</span><span style="font-size:.84rem;color:#1a1a1a;">~46 m² total</span></div>
+          <div style="display:flex;gap:9px;align-items:flex-start;"><span style="color:var(--terra);font-size:.6rem;margin-top:4px;flex-shrink:0;">▸</span><span style="font-size:.84rem;color:#1a1a1a;">Wardrobe</span></div>
+          <div style="display:flex;gap:9px;align-items:flex-start;"><span style="color:var(--terra);font-size:.6rem;margin-top:4px;flex-shrink:0;">▸</span><span style="font-size:.84rem;color:#1a1a1a;">Small work desk</span></div>
+          <div style="display:flex;gap:9px;align-items:flex-start;"><span style="color:var(--terra);font-size:.6rem;margin-top:4px;flex-shrink:0;">▸</span><span style="font-size:.84rem;color:#1a1a1a;">Mini-fridge</span></div>
         </div>
         <!-- Pricing -->
         <div style="margin-bottom:24px;">
           <div style="display:inline-block;padding:16px 22px;border:1px solid rgba(197,98,61,.28);border-radius:2px;background:rgba(197,98,61,.04);">
             <div style="font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:7px;">Rate per Night</div>
             <div class="serif" style="font-size:1.5rem;font-weight:400;color:var(--ink);line-height:1;">Rp 550.000</div>
-            <div style="font-size:.64rem;color:var(--muted);margin-top:4px;">per night</div>
           </div>
         </div>
         <a href="https://book-directonline.com/properties/BalineaHolidayHomeDirect?locale=en&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=IDR&trackPage=yes" target="_blank" rel="noopener" class="btn btn-dark" style="font-size:.62rem;">Book Now</a>
@@ -531,10 +539,10 @@
       </div>
       <div class="fr">
         <div class="serif" style="font-size:.88rem;font-style:italic;color:var(--terra);margin-bottom:8px;">02</div>
-        <h3 class="serif" style="font-size:2rem;font-weight:400;line-height:1.18;letter-spacing:-.01em;margin-bottom:14px;">Suite with Jacuzzi</h3>
+        <h3 class="serif" style="font-size:2.4rem;font-weight:400;line-height:1.18;letter-spacing:-.01em;margin-bottom:14px;">Suite with Jacuzzi</h3>
         <div style="width:28px;height:1.5px;background:var(--terra);margin-bottom:20px;"></div>
         <p style="font-size:.93rem;line-height:1.88;color:var(--muted);font-weight:300;margin-bottom:22px;">
-          Two premium Suites with a private outdoor jacuzzi, sun lounge, patio, and small kitchenette. Ideal for couples seeking extra privacy and a touch of Bali luxury.
+          Two Premium Suites with Jacuzzi. Ideal for couples seeking extra privacy. Each Suite with:
         </p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:32px;">
           <div style="display:flex;gap:9px;align-items:flex-start;"><span style="color:var(--terra);font-size:.6rem;margin-top:4px;flex-shrink:0;">▸</span><span style="font-size:.84rem;color:#1a1a1a;">Private jacuzzi</span></div>
@@ -549,7 +557,6 @@
           <div style="display:inline-block;padding:16px 22px;border:1px solid rgba(197,98,61,.28);border-radius:2px;background:rgba(197,98,61,.04);">
             <div style="font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:7px;">Rate per Night</div>
             <div class="serif" style="font-size:1.7rem;font-weight:400;color:var(--ink);line-height:1;">Rp 950.000</div>
-            <div style="font-size:.64rem;color:var(--muted);margin-top:4px;">per night</div>
           </div>
         </div>
         <a href="https://book-directonline.com/properties/BalineaHolidayHomeDirect?locale=en&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=IDR&trackPage=yes" target="_blank" rel="noopener" class="btn btn-dark" style="font-size:.62rem;">Book Now</a>
@@ -650,30 +657,74 @@
 </section>
 
 
-<!-- ═══════════════════ GALLERY ═══════════════════ -->
-<section id="gallery" style="padding:120px 0;background:var(--parch);">
+<!-- ═══════════════════ REVIEWS ═══════════════════ -->
+<section id="reviews" style="padding:120px 0;background:var(--parch);">
   <div class="wrap" style="max-width:1300px;margin:0 auto;padding:0 40px;">
-    <div class="fu" style="text-align:center;margin-bottom:60px;">
-      <div class="label" style="margin-bottom:18px;">Photo Gallery</div>
-      <h2 class="serif sec-h2" style="font-size:clamp(2.1rem,4.5vw,3.6rem);font-weight:300;line-height:1.06;letter-spacing:-.022em;">
-        Experience <em style="font-weight:400;">Balinea</em>
+
+    <!-- Header -->
+    <div class="fu" style="text-align:center;max-width:600px;margin:0 auto 64px;">
+      <div class="label" style="margin-bottom:18px;">Guest Reviews</div>
+      <h2 class="serif sec-h2" style="font-size:clamp(2.1rem,4.5vw,3.6rem);font-weight:300;line-height:1.06;letter-spacing:-.022em;margin-bottom:28px;">
+        What Our <em style="font-weight:400;">Guests Say</em>
       </h2>
+      <div style="display:inline-flex;align-items:center;gap:12px;padding:12px 22px;border:1px solid rgba(12,12,12,.1);border-radius:2px;background:#fff;">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        <span style="font-size:1.15rem;font-weight:600;color:var(--ink);">5.0</span>
+        <span style="color:#FBBC05;font-size:1rem;letter-spacing:1px;">★★★★★</span>
+        <span style="font-size:.76rem;color:var(--muted);letter-spacing:.04em;">on Google</span>
+      </div>
     </div>
-    <div class="g-gal">
-      <div class="gal-item fu" style="grid-column:span 2;grid-row:span 2;" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/1%20BHH%20Pool%20by%20Day.jpg" alt="Pool by Day"></div>
-      <div class="gal-item fu d1" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/2%20Deluxe%20Room%20Terrace.jpg" alt="Deluxe Terrace"></div>
-      <div class="gal-item fu d2" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/10%20Suite%20with%20Jacuzzi%20and%20Sunbeds.jpg" alt="Jacuzzi Suite"></div>
-      <div class="gal-item fu d1" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/6%20Restaurant%20Foto%20BHH.jpg" alt="Restaurant"></div>
-      <div class="gal-item fu d2" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/15%20BHH%20Pool%20by%20Night.jpg" alt="Pool by Night"></div>
-      <div class="gal-item fu d1" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/14%20Massage%20Room%20Foto%20BHH.jpg" alt="Massage Room"></div>
-      <div class="gal-item fu d2" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/12%20Suite%20Outdoor%20Bathroom%20BHH.jpg" alt="Outdoor Bathroom"></div>
-      <div class="gal-item fu d3" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/8a%20Bar%20BHH.jpg" alt="Bar"></div>
-      <div class="gal-item fu d4" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/4%20Deluxe%20Room%20Workdesk.jpg" alt="Workdesk"></div>
-      <div class="gal-item fu d1" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/7%20Restaurant%20Foto%20BHH.jpg" alt="Restaurant 2"></div>
-      <div class="gal-item fu d2" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/13%20Suite%20Wastafel%20BHH.jpg" alt="Suite Detail"></div>
-      <div class="gal-item fu d1" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/18%20BHH%20Lobby.jpg" alt="Lobby"></div>
-      <div class="gal-item fu d2" onclick="lbOpen(this)"><img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/16%20BHH%20Entrance.jpg" alt="Entrance"></div>
+
+    <!-- Top row: Tarra + Christophe -->
+    <div class="g-2" style="margin-bottom:24px;">
+
+      <div class="fu d1" style="padding:32px;background:#fff;border:1px solid rgba(12,12,12,.07);">
+        <div style="color:#FBBC05;font-size:1rem;letter-spacing:1px;margin-bottom:18px;">★★★★★</div>
+        <p style="font-size:.9rem;line-height:1.82;color:#2a2a2a;font-weight:300;margin-bottom:22px;">"I had the absolute pleasure to stay at Balinea for approximately 3 months. It was a fantastic stay — as a single traveller I always felt safe. The staff are all wonderful, super helpful and professional.<br><br>I truly appreciated the level of cleanliness and how quiet and relaxing the environment is here. A place I would highly recommend and a place I will certainly love to return to.<br><br>Thank you to the beautiful owners and all the staff."</p>
+        <div style="display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid rgba(12,12,12,.07);">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--terra);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:.72rem;font-weight:600;color:#fff;">T</span></div>
+          <div><div style="font-size:.82rem;font-weight:500;color:var(--ink);">Tarra</div><div style="font-size:.72rem;color:var(--muted);">February 2026</div></div>
+        </div>
+      </div>
+
+      <div class="fu d2" style="padding:32px;background:#fff;border:1px solid rgba(12,12,12,.07);">
+        <div style="color:#FBBC05;font-size:1rem;letter-spacing:1px;margin-bottom:18px;">★★★★★</div>
+        <p style="font-size:.9rem;line-height:1.82;color:#2a2a2a;font-weight:300;margin-bottom:22px;">"The location is excellent. Quiet yet close to the center of activity. All the staff are lovely and knowledgeable.<br><br>Very comfortable room, well-maintained. I stayed in the suite — very spacious. Private outdoor jacuzzi, truly beautiful location. Long pool.<br><br>Everything for an excellent stay in Bali."</p>
+        <div style="display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid rgba(12,12,12,.07);">
+          <div style="width:36px;height:36px;border-radius:50%;background:#1a5276;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:.72rem;font-weight:600;color:#fff;">CB</span></div>
+          <div><div style="font-size:.82rem;font-weight:500;color:var(--ink);">Christophe Barre</div><div style="font-size:.72rem;color:var(--muted);">October 2025</div></div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Full-width: Amanda -->
+    <div class="fu" style="padding:32px;background:#fff;border:1px solid rgba(12,12,12,.07);margin-bottom:60px;">
+      <div style="color:#FBBC05;font-size:1rem;letter-spacing:1px;margin-bottom:18px;">★★★★★</div>
+      <p style="font-size:.9rem;line-height:1.82;color:#2a2a2a;font-weight:300;margin-bottom:22px;">
+        "Everything about Balinea was just PERFECT. I honestly don't know what other word fits this place better.<br><br>
+        I booked the suite room through Agoda, and the moment I arrived I was greeted by one of the staff, Putu. All the staff were incredibly warm and kind, including Bli Putu and Mbok Yuni.<br><br>
+        The whole place smells like woven rattan in the best way. It feels exactly like the kind of Balinese villa I imagined when I was a kid. Truly a hidden gem. Clean, tidy, and very homey. The jacuzzi was great, super comfortable for long soaks, and it even had a setting where you can choose to turn the bubbles on or off. Our suite was also really spacious, and it even had an outdoor dining area near the jacuzzi. They provided a microwave, a sink for washing dishes, and a fridge, which made everything even more convenient. There was also a two-section wardrobe, so no worries if you bring a lot of clothes. The room also had a TV with Netflix — a nice touch for relaxing at night. AND they actually provide guling too! 😭👍🏻<br><br>
+        The bathroom was semi-outdoor, with the shower area slightly open and surrounded by greenery. It still felt very safe because it is fully within the private villa area. Just a really nice touch that made the whole experience feel even more relaxing and tropical.<br><br>
+        Our room was located near the kitchen, so it was easy to refill water from the dispenser. The communal kitchen was also super useful — stove, tea and coffee, even a coffee machine that guests can use anytime. The wifi was fast. Like actually fast. If you need to work while staying here, this place is more than good enough for that.<br><br>
+        Every time we were about to head out, the staff would kindly ask if we wanted the room cleaned. Their service was genuinely top tier. We felt completely at home. Even when we accidentally left a package behind, they were very responsive and helped us find it immediately.<br><br>
+        Oh, and one of my favourite parts — there were two cats that liked to stop by our room just to walk around or sunbathe. The one with the pink collar was especially adorable. 🐱<br><br>
+        This villa is honestly unforgettable. We loved it so much that we extended our stay. If I come back to Bali, I am definitely staying at Balinea again. 😭👍🏻✨"
+      </p>
+      <div style="display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid rgba(12,12,12,.07);">
+        <div style="width:36px;height:36px;border-radius:50%;background:#1e8449;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:.72rem;font-weight:600;color:#fff;">AC</span></div>
+        <div><div style="font-size:.82rem;font-weight:500;color:var(--ink);">Amanda Choirunnisa</div><div style="font-size:.72rem;color:var(--muted);">January 2026</div></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="fu d2" style="text-align:center;">
+      <a href="https://www.google.com/travel/search?q=balinea%20villa%20and%20spa%C2%A0&g2lb=4965990%2C72471280%2C72560029%2C72573224%2C72647020%2C72686036%2C72803964%2C72882230%2C73059275%2C73064764%2C121608706&hl=de-ID&gl=id&cs=1&ssta=1&ts=CAEaRwopEicyJTB4MmRkMTkwODE1ZDRjN2E4YjoweDRkNGU0NDJhODJlODFlYTMSGhIUCgcI6g8QBRgNEgcI6g8QBRgOGAEyAhAA&qs=CAEyE0Nnb0lvNzJnbDZpRmthZE5FQUU4AkIJCaMe6IIqRE5NQgkJox7ogipETk0&ap=ugEHcmV2aWV3cw&ictx=111&ved=0CAAQ5JsGahcKEwigp9jp7bWUAxUAAAAAHQAAAAAQDA" target="_blank" rel="noopener" class="btn btn-dark">
+        Read All Reviews on Google
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -695,7 +746,7 @@
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.52) 0%,transparent 48%);"></div>
         </div>
         <div class="label" style="margin-bottom:7px;">Restaurant</div>
-        <h3 class="serif" style="font-size:1.6rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">In-House Dining</h3>
+        <h3 class="serif" style="font-size:1.9rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">In-House Dining</h3>
         <p style="font-size:.88rem;line-height:1.82;color:var(--muted);font-weight:300;">Breakfast, Lunch and Dinner delivery available at extra charge. Savour Balinese and international cuisine in a tropical open-air setting.</p>
       </div>
       <!-- Bar -->
@@ -705,7 +756,7 @@
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.52) 0%,transparent 48%);"></div>
         </div>
         <div class="label" style="margin-bottom:7px;">Bar & Kitchen</div>
-        <h3 class="serif" style="font-size:1.6rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">Shared Bar & Kitchen</h3>
+        <h3 class="serif" style="font-size:1.9rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">Shared Bar & Kitchen</h3>
         <p style="font-size:.88rem;line-height:1.82;color:var(--muted);font-weight:300;">A spacious communal kitchen and bar area, fully equipped for guests who prefer to cook their own meals in our tropical garden setting.</p>
       </div>
       <!-- Spa -->
@@ -715,7 +766,7 @@
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.52) 0%,transparent 48%);"></div>
         </div>
         <div class="label" style="margin-bottom:7px;">Balinese Spa</div>
-        <h3 class="serif" style="font-size:1.6rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">In-House Massage</h3>
+        <h3 class="serif" style="font-size:1.9rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">In-House Massage</h3>
         <p style="font-size:.88rem;line-height:1.82;color:var(--muted);font-weight:300;">Balinese relaxing massage by qualified therapists in our dedicated in-house massage rooms. Available at extra charge upon request.</p>
       </div>
     </div>
@@ -771,12 +822,12 @@
         <div class="label" style="margin-bottom:8px;">Additional Services</div>
         <p style="font-size:.72rem;font-style:italic;color:var(--muted);margin-bottom:24px;">Available at extra charge</p>
         <div>
-          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.86rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Balinese Massage</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Qualified therapists in our in-house massage rooms</div></div></div>
-          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.86rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Meal Delivery</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Breakfast, Lunch and Dinner delivered to your room</div></div></div>
-          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.86rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">In-House Laundry</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Full laundry service available on-site</div></div></div>
-          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.86rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Vehicle Rental</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Motorbike and car rental arranged on-site</div></div></div>
-          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.86rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Airport Shuttle</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Transfer to/from Ngurah Rai International Airport</div></div></div>
-          <div style="display:flex;gap:16px;padding:18px 0;align-items:flex-start;"><div class="svc-dot"></div><div><div style="font-size:.86rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Sightseeing Tours</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Guided excursions to Bali's temples, rice terraces and beaches</div></div></div>
+          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.93rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Balinese Massage</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Qualified therapists in our in-house massage rooms</div></div></div>
+          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.93rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Meal Delivery</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Breakfast, Lunch and Dinner delivered to your room</div></div></div>
+          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.93rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">In-House Laundry</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Full laundry service available on-site</div></div></div>
+          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.93rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Vehicle Rental</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Motorbike and car rental arranged on-site</div></div></div>
+          <div class="svc-row"><div class="svc-dot"></div><div><div style="font-size:.93rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Airport Shuttle</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Transfer to/from Ngurah Rai International Airport</div></div></div>
+          <div style="display:flex;gap:16px;padding:18px 0;align-items:flex-start;"><div class="svc-dot"></div><div><div style="font-size:.93rem;font-weight:500;color:#0C0C0C;margin-bottom:2px;">Sightseeing Tours</div><div style="font-size:.8rem;color:var(--muted);font-weight:300;">Guided excursions to Bali's temples, rice terraces and beaches</div></div></div>
         </div>
       </div>
     </div>
@@ -802,7 +853,7 @@
           <a href="#rooms"    style="font-size:.8rem;color:rgba(247,245,242,.52);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F7F5F2'" onmouseout="this.style.color='rgba(247,245,242,.52)'">Deluxe Rooms</a>
           <a href="#rooms"    style="font-size:.8rem;color:rgba(247,245,242,.52);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F7F5F2'" onmouseout="this.style.color='rgba(247,245,242,.52)'">Suites with Jacuzzi</a>
           <a href="#villa"    style="font-size:.8rem;color:rgba(247,245,242,.52);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F7F5F2'" onmouseout="this.style.color='rgba(247,245,242,.52)'">3 Bedroom Villa</a>
-          <a href="#gallery"  style="font-size:.8rem;color:rgba(247,245,242,.52);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F7F5F2'" onmouseout="this.style.color='rgba(247,245,242,.52)'">Gallery</a>
+          <a href="#reviews"  style="font-size:.8rem;color:rgba(247,245,242,.52);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F7F5F2'" onmouseout="this.style.color='rgba(247,245,242,.52)'">Reviews</a>
           <a href="#dining"   style="font-size:.8rem;color:rgba(247,245,242,.52);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F7F5F2'" onmouseout="this.style.color='rgba(247,245,242,.52)'">Dining & Spa</a>
         </div>
       </div>
