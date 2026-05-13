@@ -139,16 +139,31 @@
     #lb {
       display: none; position: fixed; inset: 0; z-index: 200;
       background: rgba(12,12,12,.94); align-items: center; justify-content: center;
-      cursor: pointer;
     }
     #lb.open { display: flex; }
-    #lb img { max-width: 90vw; max-height: 90vh; object-fit: contain; cursor: default; }
+    #lb img { max-width: 82vw; max-height: 88vh; object-fit: contain; cursor: pointer; }
     #lb-x {
       position: absolute; top: 20px; right: 28px;
       font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; font-weight: 300;
       color: rgba(247,245,242,.7); cursor: pointer; transition: color .2s; line-height: 1;
     }
     #lb-x:hover { color: #F7F5F2; }
+    #lb-prev, #lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(247,245,242,.1); border: 1px solid rgba(247,245,242,.18);
+      color: rgba(247,245,242,.75); cursor: pointer;
+      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+      transition: background .2s, color .2s; padding: 0; flex-shrink: 0;
+    }
+    #lb-prev { left: 24px; }
+    #lb-next { right: 24px; }
+    #lb-prev:hover, #lb-next:hover { background: rgba(247,245,242,.22); color: #F7F5F2; }
+    #lb-counter {
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      font-size: .58rem; letter-spacing: .28em; text-transform: uppercase;
+      color: rgba(247,245,242,.38); pointer-events: none; white-space: nowrap;
+    }
+    .zw { cursor: pointer; }
 
     /* ---- INTRO POPUP ---- */
     #intro {
@@ -297,7 +312,14 @@
 <!-- ═══════════════════ LIGHTBOX ═══════════════════ -->
 <div id="lb" onclick="lbClose()">
   <span id="lb-x" onclick="lbClose()">✕</span>
-  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+  <button id="lb-prev" onclick="event.stopPropagation();lbNav(-1)" aria-label="Previous image">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation();lbNav(1)">
+  <button id="lb-next" onclick="event.stopPropagation();lbNav(1)" aria-label="Next image">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div id="lb-counter"></div>
 </div>
 
 <!-- ═══════════════════ NAV ═══════════════════ -->
@@ -840,16 +862,55 @@
   });
 
   // Lightbox
+  let lbImages = [], lbIdx = 0;
+
+  function lbBuild() {
+    const seen = new Set();
+    lbImages = [];
+    document.querySelectorAll('.gal-item img, .zw img').forEach(img => {
+      if (!seen.has(img.src)) { seen.add(img.src); lbImages.push(img); }
+    });
+    document.querySelectorAll('.zw').forEach(el => {
+      el.addEventListener('click', () => lbOpen(el));
+    });
+  }
+
   function lbOpen(el) {
-    document.getElementById('lb-img').src = el.querySelector('img').src;
+    const img = el.querySelector('img');
+    if (!img) return;
+    const idx = lbImages.findIndex(i => i.src === img.src);
+    lbIdx = idx !== -1 ? idx : 0;
+    lbShow();
     document.getElementById('lb').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
+
+  function lbShow() {
+    const img = lbImages[lbIdx];
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lb-img').alt = img.alt || '';
+    document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+  }
+
+  function lbNav(dir) {
+    lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
+    lbShow();
+  }
+
   function lbClose() {
     document.getElementById('lb').classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') lbClose(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') lbClose();
+    if (document.getElementById('lb').classList.contains('open')) {
+      if (e.key === 'ArrowRight') lbNav(1);
+      if (e.key === 'ArrowLeft') lbNav(-1);
+    }
+  });
+
+  lbBuild();
 
 
   // Intro popup
