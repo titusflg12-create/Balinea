@@ -240,18 +240,20 @@
     .g-ftr     { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
 
     @media (max-width: 1023px) {
-      .g-about  { grid-template-columns: 1fr; gap: 48px; }
-      .g-room   { grid-template-columns: 1fr; gap: 40px; }
-      .g-room-r { grid-template-columns: 1fr; gap: 40px; }
-      .g-2-wide { grid-template-columns: 1fr; gap: 48px; }
-      .g-ftr    { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .g-gal    { grid-template-columns: repeat(3,1fr); grid-auto-rows: 180px; }
+      .g-about    { grid-template-columns: 1fr; gap: 48px; }
+      .g-room     { grid-template-columns: 1fr; gap: 40px; }
+      .g-room-r   { grid-template-columns: 1fr; gap: 40px; }
+      .g-2-wide   { grid-template-columns: 1fr; gap: 48px; }
+      .g-ftr      { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .g-gal      { grid-template-columns: repeat(3,1fr); grid-auto-rows: 180px; }
+      .dining-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
     }
     @media (max-width: 640px) {
-      .g-3   { grid-template-columns: 1fr; gap: 20px; }
-      .g-2   { grid-template-columns: 1fr; }
-      .g-ftr { grid-template-columns: 1fr; gap: 32px; }
-      .g-gal { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
+      .g-3        { grid-template-columns: 1fr; gap: 20px; }
+      .g-2        { grid-template-columns: 1fr; }
+      .g-ftr      { grid-template-columns: 1fr; gap: 32px; }
+      .g-gal      { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
+      .dining-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
       .stats-strip { flex-direction: column; gap: 20px !important; }
       .stats-strip .stat-div { display: none !important; }
     }
@@ -741,36 +743,34 @@
         Dining, Bar <em style="font-weight:400;">&amp; Balinese Spa</em>
       </h2>
     </div>
-    <div class="g-3">
-      <!-- Restaurant -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px;" class="dining-grid">
       <div class="fu d1">
-        <div class="zw ws" style="border-radius:2px;aspect-ratio:3/4;position:relative;margin-bottom:22px;overflow:hidden;">
-          <img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/6%20Restaurant%20Foto%20BHH.jpg" alt="Restaurant">
+        <div class="zw ws" style="border-radius:2px;aspect-ratio:3/4;position:relative;margin-bottom:16px;overflow:hidden;">
+          <img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/6%20Restaurant%20Foto%20BHH.jpg" alt="Communal Area">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.52) 0%,transparent 48%);"></div>
         </div>
-        <div class="label" style="margin-bottom:7px;">Restaurant</div>
-        <h3 class="serif" style="font-size:1.9rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">In-House Dining</h3>
-        <p style="font-size:.88rem;line-height:1.82;color:var(--muted);font-weight:300;">Breakfast, Lunch and Dinner delivery available at extra charge. Savour Balinese and international cuisine in a tropical open-air setting.</p>
+        <div class="serif" style="font-size:1rem;font-weight:400;color:var(--ink);">Communal Area</div>
       </div>
-      <!-- Bar -->
       <div class="fu d2">
-        <div class="zw ws" style="border-radius:2px;aspect-ratio:3/4;position:relative;margin-bottom:22px;overflow:hidden;">
-          <img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/8a%20Bar%20BHH.jpg" alt="Bar">
+        <div class="zw ws" style="border-radius:2px;aspect-ratio:3/4;position:relative;margin-bottom:16px;overflow:hidden;">
+          <img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/8a%20Bar%20BHH.jpg" alt="Shared Kitchen and Bar">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.52) 0%,transparent 48%);"></div>
         </div>
-        <div class="label" style="margin-bottom:7px;">Bar & Kitchen</div>
-        <h3 class="serif" style="font-size:1.9rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">Shared Bar & Kitchen</h3>
-        <p style="font-size:.88rem;line-height:1.82;color:var(--muted);font-weight:300;">A spacious communal kitchen and bar area, fully equipped for guests who prefer to cook their own meals in our tropical garden setting.</p>
+        <div class="serif" style="font-size:1rem;font-weight:400;color:var(--ink);">Shared Kitchen and Bar</div>
       </div>
-      <!-- Spa -->
       <div class="fu d3">
-        <div class="zw ws" style="border-radius:2px;aspect-ratio:3/4;position:relative;margin-bottom:22px;overflow:hidden;">
-          <img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/14%20Massage%20Room%20Foto%20BHH.jpg" alt="Massage Room">
+        <div class="zw ws" style="border-radius:2px;aspect-ratio:3/4;position:relative;margin-bottom:16px;overflow:hidden;">
+          <img src="Brand_Assets_Balinea/wetransfer_1-bhh-pool-by-day-jpg_2026-05-07_0831/14%20Massage%20Room%20Foto%20BHH.jpg" alt="Inhouse Massage">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.52) 0%,transparent 48%);"></div>
         </div>
-        <div class="label" style="margin-bottom:7px;">Balinese Spa</div>
-        <h3 class="serif" style="font-size:1.9rem;font-weight:400;line-height:1.2;letter-spacing:-.01em;margin-bottom:11px;">In-House Massage</h3>
-        <p style="font-size:.88rem;line-height:1.82;color:var(--muted);font-weight:300;">Balinese relaxing massage by qualified therapists in our dedicated in-house massage rooms. Available at extra charge upon request.</p>
+        <div class="serif" style="font-size:1rem;font-weight:400;color:var(--ink);">Inhouse Massage</div>
+      </div>
+      <div class="fu d4">
+        <div class="zw ws" style="border-radius:2px;aspect-ratio:3/4;position:relative;margin-bottom:16px;overflow:hidden;">
+          <img src="wetransfer_chatgpt-image-may-11-2026-03_23_59-pm-png_2026-05-13_0750/NewPool.png" alt="Shared Pool">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.52) 0%,transparent 48%);"></div>
+        </div>
+        <div class="serif" style="font-size:1rem;font-weight:400;color:var(--ink);">Shared Pool</div>
       </div>
     </div>
   </div>
