@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balinea Holiday Home — Seminyak, Bali</title>
+  <meta name="description" content="Balinea Holiday Home — boutique guesthouse in Seminyak, Bali. Deluxe Rooms, Jacuzzi Suites, Private Villa, 16m pool, Balinese spa and on-site dining.">
+  <meta property="og:title" content="Balinea Holiday Home — Seminyak, Bali">
+  <meta property="og:description" content="A home away from home in Seminyak. Deluxe Rooms from Rp 400.000, Jacuzzi Suites from Rp 650.000, Private Villa from September 2026.">
+  <meta property="og:image" content="wetransfer_chatgpt-image-may-11-2026-03_23_59-pm-png_2026-05-13_0750/NewPool.png">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -12,7 +17,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=4">
   <link rel="apple-touch-icon" href="favicon.png?v=4">
   <link rel="preload" as="image" href="wetransfer_chatgpt-image-may-11-2026-03_23_59-pm-png_2026-05-13_0750/NewPool.png">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
       --parch:   #F7F5F2;
@@ -308,7 +312,9 @@
       .bk-card { padding:32px 24px 28px; }
       .bk-dates { grid-template-columns:1fr !important; }
     }
-  </style>
+    @media(min-width:1024px){ #dlinks{display:flex!important;} #ham{display:none!important;} }
+  @media(max-width:1023px){ #dlinks{display:none!important;} #ham{display:flex!important;} }
+</style>
 </head>
 <body>
 
@@ -395,10 +401,6 @@
     </div>
   </div>
 </nav>
-<style>
-  @media(min-width:1024px){ #dlinks{display:flex!important;} #ham{display:none!important;} }
-  @media(max-width:1023px){ #dlinks{display:none!important;} #ham{display:flex!important;} }
-</style>
 
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
@@ -914,6 +916,7 @@
     </div>
     <div style="border-top:1px solid rgba(247,245,242,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
       <div style="font-size:.7rem;color:rgba(247,245,242,.22);">© 2026 Balinea Holiday Home. All rights reserved.</div>
+      <a href="privacy-policy.html" style="font-size:.7rem;color:rgba(247,245,242,.22);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='rgba(247,245,242,.55)'" onmouseout="this.style.color='rgba(247,245,242,.22)'">Privacy Policy</a>
     </div>
   </div>
 </footer>
@@ -992,9 +995,13 @@
   }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
   document.querySelectorAll('.fu,.fl,.fr').forEach(el => { if (!el.classList.contains('in')) io.observe(el); });
 
-  // Nav solidify
+  // Nav solidify + sticky CTA
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 56), { passive: true });
+  const stickyCta = document.getElementById('sticky-cta');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('solid', scrollY > 56);
+    stickyCta.classList.toggle('up', scrollY > 400);
+  }, { passive: true });
 
   // Mobile menu
   let mo = false;
@@ -1076,7 +1083,9 @@
 
   function lbClose() {
     document.getElementById('lb').classList.remove('open');
-    document.body.style.overflow = '';
+    if (document.getElementById('booking-modal').style.display !== 'block') {
+      document.body.style.overflow = '';
+    }
   }
 
   document.addEventListener('keydown', e => {
@@ -1104,9 +1113,12 @@
 
   function closeBooking() {
     const modal = document.getElementById('booking-modal');
-    if (modal.style.display === 'none') return;
+    if (modal.style.display !== 'block') return;
     modal.style.display = 'none';
-    document.body.style.overflow = '';
+    document.getElementById('booking-form').reset();
+    if (!document.getElementById('lb').classList.contains('open')) {
+      document.body.style.overflow = '';
+    }
   }
 
   document.getElementById('bk-checkin').addEventListener('change', function() {
