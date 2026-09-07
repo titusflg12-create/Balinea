@@ -9,6 +9,17 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 18px; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    img, svg, video { max-width: 100%; height: auto; }
+    /* Grid/flex items default to a min-width equal to their content's
+       intrinsic size, which lets a wide photo or long line force the
+       whole page wider than the phone screen. This resets that default
+       everywhere so containers can actually shrink on small screens. */
+    .g-about, .g-room, .g-room-r, .g-3, .g-2, .g-2-wide, .g-gal, .g-ftr,
+    .g-about > *, .g-room > *, .g-room-r > *, .g-3 > *, .g-2 > *, .g-2-wide > *,
+    .dining-grid > *, .bk-dates > * {
+      min-width: 0;
+    }
     em { font-style: normal; }
     body {
       font-family: 'Jost', system-ui, sans-serif;
@@ -44,7 +55,11 @@
     .d5 { transition-delay: .5s; }
 
     /* ---- ZOOM WRAP ---- */
-    .zw { overflow: hidden; }
+    /* min-width/min-height:0 stop these grid/flex items from being forced
+       wider than their track by the image's intrinsic pixel size — without
+       this, phones were rendering the whole page zoomed out to fit the
+       widest photo instead of wrapping it to the column. */
+    .zw { overflow: hidden; min-width: 0; min-height: 0; }
     .zw img { transition: transform .7s cubic-bezier(.25,.46,.45,.94); display: block; width: 100%; height: 100%; object-fit: cover; }
     .zw:hover img { transform: scale(1.06); }
 
@@ -75,6 +90,13 @@
       background: rgba(247,245,242,.96); backdrop-filter: blur(14px);
       box-shadow: 0 1px 0 rgba(12,12,12,.09);
     }
+    /* The mobile dropdown menu had no background of its own, so opening it
+       over the hero (before the nav has scrolled solid) left its links
+       transparent and unreadable against the photo behind them. */
+    #mmenu {
+      background: rgba(247,245,242,.98); backdrop-filter: blur(14px);
+      box-shadow: 0 8px 24px rgba(12,12,12,.18);
+    }
     .nav-a {
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; text-decoration: none;
@@ -91,6 +113,13 @@
     #nav.solid .nav-a:hover { color: var(--terra); }
     #nav:not(.solid) .ham-bar { background: rgba(247,245,242,.85); }
     #nav.solid .ham-bar { background: var(--ink); }
+    /* Tap targets: the icon itself is tiny (22x14px of bars), so give the
+       button a proper ~44px hit area instead of just its 4px padding. */
+    #ham { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+    /* Mobile menu links/footer links were plain inline text with no padding
+       — comfortable to read but a thin sliver to actually tap. */
+    #mmenu .nav-a { display: block; padding: 9px 0; }
+    .g-ftr a { display: inline-block; padding: 5px 0; }
 
     /* ---- GALLERY ---- */
     .gal-item { position: relative; overflow: hidden; cursor: pointer; }
@@ -137,9 +166,11 @@
     #lb.open { display: flex; }
     #lb img { max-width: 82vw; max-height: 88vh; object-fit: contain; cursor: pointer; }
     #lb-x {
-      position: absolute; top: 20px; right: 28px;
+      position: absolute; top: 8px; right: 16px;
       font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; font-weight: 300;
       color: rgba(247,245,242,.7); cursor: pointer; transition: color .2s; line-height: 1;
+      padding: 12px; min-width: 44px; min-height: 44px;
+      display: flex; align-items: center; justify-content: center;
     }
     #lb-x:hover { color: #F7F5F2; }
     #lb-prev, #lb-next {
@@ -226,6 +257,12 @@
     .g-2-wide  { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .g-gal     { display: grid; grid-template-columns: repeat(4,1fr); grid-auto-rows: 220px; gap: 8px; }
     .g-ftr     { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 64px; margin-bottom: 56px; }
+    /* Base rule moved here from an inline style on the element — an inline
+       style always wins over a class rule regardless of media query, so the
+       mobile overrides below could never actually take effect while this
+       lived inline. That's why the dining photos stayed jammed into 4
+       columns on phones. */
+    .dining-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; }
 
     @media (max-width: 1023px) {
       .g-about    { grid-template-columns: 1fr; gap: 48px; }
