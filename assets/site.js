@@ -38,18 +38,19 @@
     stickyCta.classList.toggle('up', scrollY > 400);
   }, { passive: true });
 
-  // Mobile menu
+  // Mobile menu — toggles a class (not style.display) so #mmenu can
+  // animate open/closed via CSS max-height/opacity instead of snapping.
   let mo = false;
   function closeMenu() {
     mo = false;
-    document.getElementById('mmenu').style.display = 'none';
+    document.getElementById('mmenu').classList.remove('open');
     document.getElementById('hb1').style.transform = '';
     document.getElementById('hb2').style.opacity = '1';
     document.getElementById('hb3').style.transform = '';
   }
   document.getElementById('ham').addEventListener('click', () => {
     mo = !mo;
-    document.getElementById('mmenu').style.display = mo ? 'block' : 'none';
+    document.getElementById('mmenu').classList.toggle('open', mo);
     document.getElementById('hb1').style.transform = mo ? 'translateY(6.5px) rotate(45deg)' : '';
     document.getElementById('hb2').style.opacity = mo ? '0' : '1';
     document.getElementById('hb3').style.transform = mo ? 'translateY(-6.5px) rotate(-45deg)' : '';

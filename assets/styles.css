@@ -92,11 +92,32 @@
     }
     /* The mobile dropdown menu had no background of its own, so opening it
        over the hero (before the nav has scrolled solid) left its links
-       transparent and unreadable against the photo behind them. */
+       transparent and unreadable against the photo behind them. It also
+       just snapped open/shut with a display toggle — this animates it
+       into a smooth slide + fade instead, and gives each link its own row
+       with a hairline divider so the list reads as one clean block rather
+       than loose floating text. */
     #mmenu {
       background: rgba(247,245,242,.98); backdrop-filter: blur(14px);
       box-shadow: 0 8px 24px rgba(12,12,12,.18);
+      max-height: 0; opacity: 0; overflow: hidden; pointer-events: none;
+      padding: 0; border-top: 0 solid rgba(12,12,12,.08);
+      transition: max-height .4s cubic-bezier(.16,1,.3,1), opacity .28s ease,
+                  padding .4s cubic-bezier(.16,1,.3,1), border-top-width .4s ease;
     }
+    /* padding/border live here (not inline) specifically so this closed
+       state can zero them out — max-height alone can't collapse a box
+       whose inline padding+border already add up to more than 0. */
+    #mmenu.open {
+      max-height: 420px; opacity: 1; pointer-events: auto;
+      padding: 20px 0 28px; border-top-width: 1px;
+    }
+    #mmenu .nav-a {
+      display: block; padding: 15px 2px;
+      border-bottom: 1px solid rgba(12,12,12,.07);
+    }
+    #mmenu .nav-a:active { color: var(--terra); }
+    #mmenu .btn { width: 100%; margin-top: 20px; }
     .nav-a {
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em;
       text-transform: uppercase; text-decoration: none;
@@ -116,9 +137,9 @@
     /* Tap targets: the icon itself is tiny (22x14px of bars), so give the
        button a proper ~44px hit area instead of just its 4px padding. */
     #ham { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
-    /* Mobile menu links/footer links were plain inline text with no padding
-       — comfortable to read but a thin sliver to actually tap. */
-    #mmenu .nav-a { display: block; padding: 9px 0; }
+    /* Footer links were plain inline text with no padding — comfortable to
+       read but a thin sliver to actually tap. (#mmenu link padding is set
+       above alongside its other list styling.) */
     .g-ftr a { display: inline-block; padding: 5px 0; }
 
     /* ---- GALLERY ---- */
